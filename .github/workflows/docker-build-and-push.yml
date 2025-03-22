@@ -28,4 +28,10 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: neudson01/kubectl-with-curl:latest
+          platforms: linux/amd64,linux/arm64
+          tags: |
+            neudson01/kubectl-with-curl:latest
+            neudson01/kubectl-with-curl:${{ github.sha }}
+          cache-from: type=registry,ref=neudson01/kubectl-with-curl:latest
+          cache-to: type=inline
+          
